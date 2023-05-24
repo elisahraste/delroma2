@@ -1,0 +1,216 @@
+MDScreen:
+    name: "compra"
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "menu"
+        MDLabel:
+            text: "Pedido"
+            font_size: "28sp"
+            pos_hint: {"center_x": .6, "center_y": .85}
+            color: rgba(0, 0, 61, 255)
+        MDLabel:
+            text: "Generar Solicitud"
+            font_size: "14sp"
+            size_hint_x: .45
+            pos_hint: {"center_x": .25,"center_y": .8}
+            halign: "center"
+            color: rgba(0, 0, 61, 255)
+              
+        BoxLayout:          
+            MDGridLayout:
+                size_hint: .5, .25
+                pos_hint: {"center_x": .7, "center_y": .65}
+                cols:3
+                    
+                MDLabel: 
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "Producto" 
+                    color: rgba(140,138,190,255)  
+                    font_size: "15sp"
+
+                MDLabel: 
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "Precio ARS" 
+                    color: rgba(140,138,190,255)  
+                    font_size: "15sp" 
+ 
+                MDLabel:
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "Cantidad" 
+                    color: rgba(140,138,190,255)  
+                    font_size: "15sp"
+
+                        
+                MDLabel:
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "Mesa" 
+                    color: rgba(140,138,170,255)
+                    theme_text_color: "Custom"                    
+                    font_size: "14sp"
+                    
+                MDLabel:
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "50.000" 
+                    color: rgba(140,138,170,255)
+                    theme_text_color: "Custom"                    
+                    font_size: "12sp"
+                    
+                TextInput:
+                    id: mesa
+                    input_filter: 'int'
+                    size_hint_x: .8
+                    size_hint_y: .75
+                    pos_hint: {"center_x": .3,"center_y": .6}
+                    halign: "center"
+                    hint_text: "0"                 
+                    background_color: 1, 1, 1, 0
+                    foreground_color: rgba(0, 0, 61, 255)
+                    cursor_color: rgba(0, 0, 61, 255)
+                    font_size: "14sp" 
+                    cursor_width: "2sp" 
+                    
+                MDLabel:
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "Sillon"
+                    color: rgba(140,138,170,255)
+                    theme_text_color: "Custom"                    
+                    font_size: "14sp"
+                    
+                MDLabel:
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "120.000" 
+                    color: rgba(140,138,170,255)
+                    theme_text_color: "Custom"                    
+                    font_size: "12sp"
+                    
+                TextInput:
+                    id: sillon
+                    input_filter: 'int'
+                    size_hint_x: .8
+                    size_hint_y: .75
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    hint_text: "0"                 
+                    background_color: 1, 1, 1, 0
+                    foreground_color: rgba(0, 0, 61, 255)
+                    cursor_color: rgba(0, 0, 61, 255)
+                    font_size: "14sp" 
+                    cursor_width: "2sp"  
+                     
+                MDLabel:
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "Puff"
+                    color: rgba(140,138,170,255)
+                    theme_text_color: "Custom"                    
+                    font_size: "14sp"
+                    
+                MDLabel:
+                    size_hint_x: .5
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    text: "95.000" 
+                    color: rgba(140,138,170,255)
+                    theme_text_color: "Custom"                    
+                    font_size: "12sp"
+                    
+                TextInput:
+                    id: puff
+                    input_filter: 'int'
+                    size_hint_x: .5
+                    size_hint_y: .75
+                    pos_hint: {"center_x": .5,"center_y": .6}
+                    halign: "center"
+                    hint_text: "0"                 
+                    background_color: 1, 1, 1, 0
+                    foreground_color: rgba(0, 0, 61, 255)
+                    cursor_color: rgba(0, 0, 61, 255)
+                    font_size: "14sp" 
+                    cursor_width: "2sp"                               
+                              
+        MDLabel:
+            size_hint_x: .5
+            pos_hint: {"center_x": .5,"center_y": .4}
+            halign: "center" 
+            text: "TOTAL ARS "  
+            color: rgba(140,138,170,255)
+            theme_text_color: "Custom"                    
+            font_size: "14sp"          
+                   
+  
+                            
+        MDFloatLayout:
+            size_hint: .7, .07
+            pos_hint: {"center_x": .5, "center_y": .28}
+            TextInput:
+                id: domicilio
+                hint_text: "Domicilio de entrega"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43, "center_y": .4}
+                background_color: 1, 1, 1, 0
+                foreground_color: rgba(0, 0, 61, 255)
+                cursor_color: rgba(0, 0, 61, 255)
+                font_size: "14sp"
+                cursor_width: "2sp"
+                multiline: False
+            MDFloatLayout:
+                pos_hint:{"center_x": .45, "center_y": 0}
+                size_hint_y: .03
+                md_bg_color: rgba(178, 178, 178, 255)
+        MDFloatLayout:
+            size_hint: .7, .07
+            pos_hint: {"center_x": .5, "center_y": .2}
+            TextInput:
+                id: telefono
+                hint_text: "Telefono de Contacto:"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43, "center_y": .5}
+                background_color: 1, 1, 1, 0
+                foreground_color: rgba(0, 0, 61, 255)
+                cursor_color: rgba(0, 0, 61, 255)
+                font_size: "14sp"
+                cursor_width: "2sp"
+                multiline: False
+            MDFloatLayout:
+                pos_hint:{"center_x": .45, "center_y": 0}
+                size_hint_y: .03
+                md_bg_color: rgba(178, 178, 178, 255)         
+        Button:
+            text: "Finalizar"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .1}
+            background_color:0,0,0,0
+            on_release:
+                app.send_pedido(mesa,sillon,puff)
+          
+                
+            canvas.before:
+                Color:
+                    rgb: rgba(52, 0, 231,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]    
