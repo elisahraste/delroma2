@@ -1,4 +1,5 @@
 from kivy.lang import Builder
+from kivy.uix.textinput import TextInput
 from kivymd.app import MDApp
 from kivy.core.text import LabelBase
 from kivy.uix.screenmanager import ScreenManager
@@ -10,6 +11,8 @@ from kivy.core.window import Window
 from kivy.logger import Logger
 import mysql.connector
 import re
+from flask import Flask, request
+from threading import Thread
 
 class origen(ScreenManager):
     pass
@@ -52,10 +55,12 @@ Window.size = (320, 600)
 
 class MainApp(MDApp):
     pass
-
+    host = '0.0.0.0'
+    port = 5000
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'  
      
     conexion = mysql.connector.Connect(host = "190.228.29.62",
+                                                        port = "5000",
                                                         user = "elisa_dev",
                                                         passwd = "xgvd1z4hxbA3",
                                                         database = "sistemas_colaborativos")
@@ -81,8 +86,25 @@ class MainApp(MDApp):
         screen_manager.add_widget(Builder.load_file("sillones.kv"))
         screen_manager.add_widget(Builder.load_file("compra.kv"))
         screen_manager.add_widget(Builder.load_file("origen2.kv"))
+        
+        self.log_text = TextInput(multiline=True, text='Starting\n')
+        Thread(target=self.start_flask).start()
+        self.log_text.insert_text('Flask listening on %s:%s\n' % (self.host, self.port))
+        #return self.log_text
         return screen_manager
+        
+
     
+    
+    def start_flask(self):
+        self.flask_app = Flask(__name__)
+
+        @self.flask_app.route('/')
+        def index():
+            self.log_text.insert_text('Request: %s %s\n' % (request.remote_addr, request.path))
+            return '<html><body>It works</body></html>\n'
+
+        self.flask_app.run(host=(self.host, self.port))
 
 
 
@@ -167,6 +189,9 @@ class MainApp(MDApp):
             self.manager.current = 'menu'
 
     def send_pedido(self, **kwargs):
+    
+
+    
        
         """n1 = int(mesa.text)
         n2 = int(sillon.text)
@@ -187,6 +212,7 @@ class Pedido(ScreenManager):
 #my_instance = MainApp()
 #my_instance.send_pedido()
 MainApp().send_pedido()
+
 
 
 #postgres://elisa_sistemas_colaborativos_user:fX1d2rHGdZMDFljjbvW45oOC9w5mpRqZ@dpg-chknbhu7avj217f3npvg-a.oregon-postgres.render.com/elisa_sistemas_colaborativos

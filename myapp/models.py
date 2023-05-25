@@ -22,5 +22,10 @@ class Producto(models.Model):
     nombre_producto = models.CharField(max_length=100)   
     descripcion_producto = models.TextField()
     precio_producto = models.IntegerField(100)
+ 
     
+class Task(models.Model):
+    name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name    
     
